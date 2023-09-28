@@ -3,15 +3,18 @@
 import readchar
 
 def countNumberUpTo(stop_char):
+    """
+    Save keys typed
+    value   : Key
+    return  : Nothing
+    """
     total_number = 0
     total_others = 0
-    order = 0
 
     print('Start typing')
 
     inputs_num = []
     inputs_other = []
-    inputs_dic = {}
 
     while True:
         key = readchar.readchar()
@@ -22,12 +25,12 @@ def countNumberUpTo(stop_char):
             inputs_num.append(input)
         else:
             inputs_other.append(input)
-            inputs_dic[order] = input
-            order += 1
+
+        inputs_num.sort()
+        inputs_other.sort()
 
         print(inputs_num)
         print(inputs_other)
-        print(inputs_dic)
 
         if input == stop_char:
             break

@@ -5,29 +5,22 @@ import readchar
 def countNumberUpTo(stop_char):
     total_number = 0
     total_others = 0
-    order = 0
 
     print('Start typing')
 
-    inputs_num = []
     inputs_other = []
-    inputs_dic = {}
 
     while True:
         key = readchar.readchar()
 
         input = key
 
-        if input.isnumeric():
-            inputs_num.append(input)
-        else:
-            inputs_other.append(input)
-            inputs_dic[order] = input
-            order += 1
+        inputs_other.append(input)
+
+        inputs_num = [item for item in inputs_other if item.isnumeric()]
 
         print(inputs_num)
         print(inputs_other)
-        print(inputs_dic)
 
         if input == stop_char:
             break
@@ -35,7 +28,8 @@ def countNumberUpTo(stop_char):
     for input in inputs_num: 
         total_number += 1
     for input in inputs_other:
-        total_others += 1
+        if not input.isnumeric():
+            total_others += 1
 
     print('You entered ' + str(total_number) + ' number.')
     print('You entered ' + str(total_others) + ' others.')
