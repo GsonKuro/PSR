@@ -2,11 +2,15 @@
 
 import readchar
 
-def addComplex(x,y):  
-    return x + y 
+def addComplex(x,y):
+    real =  x[0] + y[0]
+    imaginary = x[1] + y[1]
+    return str(real) + " + " + str(imaginary) + "i" 
     
 def multiplyComplex(x,y):
-    return x * y
+    real = x[0] * y[0] + -(x[1] * y[1])
+    imaginary = x[0] * y[1] + x[1] * y[0]
+    return str(real) + " + " + str(imaginary) + "i" 
 
 def printComplex(x):
     print(x)
@@ -17,7 +21,7 @@ def main():
     key1 = readchar.readkey()
     key2 = readchar.readkey()
 
-    z1 = complex(int(key1),int(key2))
+    z1 = (int(key1),int(key2))
     printComplex(z1)
 
     print("Insert real and imaginary number, respetively, for second complex number")
@@ -25,15 +29,12 @@ def main():
     key1 = readchar.readkey()
     key2 = readchar.readkey()
 
-    print("Starting calculating addition and multiplication")
-
-    z2 = complex(int(key1),int(key2))
+    z2 = (int(key1),int(key2))
     printComplex(z2)
 
-    cenas = addComplex(z1,z2)
-    print(cenas)
-    coisas = multiplyComplex(z1,z2)
-    print(coisas)
+    print("Starting solving addition and multiplication")
+
+    printComplex(addComplex(z1,z2))
     printComplex(multiplyComplex(z1,z2))
 
 if __name__ == "__main__":

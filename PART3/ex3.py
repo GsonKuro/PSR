@@ -4,13 +4,17 @@ from collections import namedtuple
 
 import readchar
 
-Complex = namedtuple('Complex', ['r','i'])
+Complex = namedtuple('Complex', ['real', 'imaginary'])
 
-def addComplex(x,y):  
-    return x + y 
+def addComplex(x,y):
+    real =  x[0] + y[0]
+    imaginary = x[1] + y[1]
+    return Complex(real,imaginary)
     
 def multiplyComplex(x,y):
-    return x * y
+    real = x[0] * y[0] + -(x[1] * y[1])
+    imaginary = x[0] * y[1] + x[1] * y[0]
+    return Complex(real,imaginary) 
 
 def printComplex(x):
     print(x)
@@ -21,9 +25,7 @@ def main():
     key1 = readchar.readkey()
     key2 = readchar.readkey()
 
-    _z1 = Complex(r = int(key1),i = int(key2))
-    z1 = complex(_z1.r,_z1.i)
-    printComplex(_z1)
+    z1 = Complex(int(key1),int(key2))
     printComplex(z1)
 
     print("Insert real and imaginary number, respetively, for second complex number")
@@ -31,17 +33,12 @@ def main():
     key1 = readchar.readkey()
     key2 = readchar.readkey()
 
-    print("Starting calculating addition and multiplication")
-
-    _z2 = Complex(r = int(key1),i = int(key2))
-    z2 = complex(_z2.r,_z2.i)
-    printComplex(_z2)
+    z2 = Complex(int(key1),int(key2))
     printComplex(z2)
 
-    cenas = addComplex(z1,z2)
-    print(cenas)
-    coisas = multiplyComplex(z1,z2)
-    print(coisas)
+    print("Starting solving addition and multiplication")
+
+    printComplex(addComplex(z1,z2))
     printComplex(multiplyComplex(z1,z2))
 
 if __name__ == "__main__":
