@@ -3,8 +3,7 @@
 import random
 import argparse
 from readchar import readkey  
-
-list_words = ["Abduzir", "Belicoso", "Cominar", "Dissentir", "Engodar", "Fugaz", "Homizio", "Ígneo", "Jaez", "Lauto"]
+from random_word import RandomWords
 
 def arguments():
     """
@@ -55,7 +54,8 @@ def mod_word(num_inputs):
     count = 0
 
     while(True):
-        temp_word = random.choice(list_words)
+        randomwords = RandomWords()
+        temp_word = randomwords.get_random_word()
         print(temp_word)
 
         while (True):
