@@ -150,7 +150,7 @@ def mod_char(num_inputs, mode):
                 end_game_time = ctime()
                 break
 
-        print("Time finished you printed: " + str(count) + " characters!!")
+        print("Time finished you printed: " + str(count_right) + " characters right!!")
 
         dataGame(count, num_inputs, count_right, (count_right/count), (cumTime/end_time), (cumTimeRight/end_time), (cumTimeWrong/end_time), init_game_time, end_game_time, list_inputs)
 
@@ -257,7 +257,7 @@ def mod_word(num_inputs, mode):
                 end_game_time = ctime()
                 break
         
-        print("Time finished you printed: " + str(count) + " words")
+        print("Time finished you printed: " + str(count_right) + " words right!!")
 
         dataGame(count, num_inputs, count_right, (count_right/count), (cumTime/end_time), (cumTimeRight/end_time), (cumTimeWrong/end_time), init_game_time, end_game_time, list_inputs)    
 
