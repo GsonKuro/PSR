@@ -38,7 +38,7 @@ def arguments():
     # Add argument to choose the type of typing game
     parser.add_argument('-uw', '--uses_words', 
                         type=str, 
-                        choices=['characters', 'words'], 
+                        choices=['words'], 
                         help='Use word typing mode, instead of single character typing', 
                         required=False,
                         default='characters')
@@ -81,6 +81,7 @@ def mod_char(num_inputs, mode):
     
     if mode == 'inputs':
         init_time = time()
+
         while True:
             temp_char = random.randint(97, 122)
             init_char_time = time()
@@ -133,15 +134,18 @@ def mod_char(num_inputs, mode):
                 print(compare_key + Fore.GREEN + " Correct key " + Fore.RESET + 
                       " Time: " + str(end_char_time) + " seconds")
                 count_right += 1
+                cumTimeRight += end_char_time
                 
             elif compare_key != chr(temp_char):
                 end_char_time = time() - init_char_time
                 print(compare_key + Fore.RED + " Wrong key " + Fore.RESET + 
                       " Time: " + str(end_char_time) + " seconds")
                 count_wrong += 1
+                cumTimeWrong += end_char_time
 
             list_inputs.append(Input(chr(temp_char), compare_key, end_char_time))
 
+            cumTime += end_char_time
             count = count_right + count_wrong
 
             end_time = time() - init_time
@@ -193,15 +197,18 @@ def mod_word(num_inputs, mode):
                             print(compare_word + Fore.GREEN + " Correct word " + Fore.RESET + 
                                 " Time: " + str(end_word_time) + " seconds")
                             count_right += 1
+                            cumTimeRight += end_word_time
                             
                         elif compare_word != temp_word:
                             end_word_time = time() - init_word_time
                             print(compare_word + Fore.RED + " Wrong word " + Fore.RESET + 
                                 " Time: " + str(end_word_time) + " seconds")
                             count_wrong += 1
+                            cumTimeWrong += end_word_time
 
                         list_inputs.append(Input(temp_word, compare_word, end_word_time))
 
+                        cumTime += end_word_time
                         count = count_right + count_wrong
                         compare_word = ""
                         break
@@ -235,15 +242,18 @@ def mod_word(num_inputs, mode):
                             print(compare_word + Fore.GREEN + " Correct word " + Fore.RESET + 
                                 " Time: " + str(end_word_time) + " seconds")
                             count_right += 1
+                            cumTimeRight += end_word_time
                             
                         elif compare_word != temp_word:
                             end_word_time = time() - init_word_time
                             print(compare_word + Fore.RED + " Wrong word " + Fore.RESET + 
                                 " Time: " + str(end_word_time) + " seconds")
                             count_wrong += 1
+                            cumTimeWrong += end_word_time
 
                         list_inputs.append(Input(temp_word, compare_word, end_word_time))
 
+                        cumTime += end_word_time
                         count = count_right + count_wrong
                         compare_word = ""
                         break
