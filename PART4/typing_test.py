@@ -115,7 +115,7 @@ def mod_char(num_inputs, mode):
                 end_time = time() - init_time
                 break
 
-        dataGame(num_inputs, end_time, count_right, (count_right/count), (cumTime/end_time), (cumTimeRight/end_time), (cumTimeWrong/end_time), init_game_time, end_game_time, list_inputs)
+        dataGame(num_inputs, end_time, count_right, (count_right/count), (end_time/count), (cumTimeRight/count_right), (cumTimeWrong/count_wrong), init_game_time, end_game_time, list_inputs)
         
     else:
         init_time = time()
@@ -184,6 +184,7 @@ def mod_word(num_inputs, mode):
 
             while (True):
                 exit_key = readkey()
+                print(exit_key, end=" ")
                 
                 if exit_key == ' ':
                     break
@@ -211,8 +212,8 @@ def mod_word(num_inputs, mode):
                         cumTime += end_word_time
                         count = count_right + count_wrong
                         compare_word = ""
-                        break
-
+                        break 
+                
             if count == num_inputs or exit_key == ' ':
                 end_game_time = ctime()
                 end_time = time() - init_time
