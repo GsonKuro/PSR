@@ -230,6 +230,5 @@ def main():
     use_words_characters(args["use_words"],args["max_value"],args["use_time_mode"])               
 
 
-
 if __name__ == "__main__":
     main()
