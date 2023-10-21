@@ -5,6 +5,7 @@ import argparse
 import numpy
 from functools import partial
 import json
+import pprint
 
 
 
@@ -33,8 +34,7 @@ def main():
     parser.add_argument('-u_HSV', '--use_HSV', help='Formato de imagem.', action='store_true')
     args = vars(parser.parse_args())
     cv2.namedWindow('window - Ex3a')
-
-    print("cenas 1")
+    d = {}
 
     image = cv2.imread(args['image'], cv2.IMREAD_COLOR)
 
@@ -71,10 +71,24 @@ def main():
 
     cv2.waitKey(0)
 
+
+    d = {'limits': {'B': {'max': cv2.getTrackbarPos('max B/H', 'window - Ex3a'), 'min': cv2.getTrackbarPos('min B/H', 'window - Ex3a')},
+         'G': {'max': cv2.getTrackbarPos('max G/S', 'window - Ex3a'), 'min': cv2.getTrackbarPos('min G/S', 'window - Ex3a')},
+         'R': {'max': cv2.getTrackbarPos('max R/V', 'window - Ex3a'), 'min': cv2.getTrackbarPos('min R/V', 'window - Ex3a')}}}
+
+    print(d)
+
+    d_json = json.dumps(d, indent=4)
+
+    print(d_json)
+
     file_name = 'limits.json'
-    with open(file_name, 'w') as file_handle:
-        print('writing dictionary d to file ' + file_name)
-        json.dump(d, file_handle) # d is the dicionary
+
+    openFile = open(file_name, "w")
+
+    openFile.write(d_json)
+
+    openFile.close()
 
 if __name__ == "__main__":
     main()
